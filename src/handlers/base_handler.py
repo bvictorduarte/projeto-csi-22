@@ -1,29 +1,28 @@
-from dataclasses import dataclass
-from typing import Optional, List
+from abc import ABC, abstractmethod
+from typing import List
+from src.agents.base_agent import AgentResponse, Agent
 
-@dataclass
-class HandlerResponse:
-    message: str
-    next_handler: Optional[str] = None
+class Handler(ABC):
+    def __init__(self, agent: Agent):
+        self.agent = agent
 
-class POOHandler:
-    def __init__(self):
-        """
-        Inicializa o handler base para processamento de mensagens relacionadas a POO.
-        A implementação completa será feita nas próximas etapas.
-        """
+    @abstractmethod
+    async def handle(self, context: List[str]) -> AgentResponse:
+        """Processa o contexto usando o agent e retorna uma resposta."""
         pass
 
-    def route_message(self, messages: List[str]) -> str:
-        """
-        Determina qual fluxo seguir com base nas mensagens.
-        Será implementado posteriormente.
-        """
-        pass
+class RouterHandler(Handler):
+    async def handle(self, context: List[str]) -> AgentResponse:
+        return await self.agent.process(context)
 
-    def handle_message(self, flow: str, messages: List[str]) -> HandlerResponse:
-        """
-        Processa a mensagem de acordo com o fluxo determinado.
-        Será implementado posteriormente.
-        """
-        pass 
+class FundamentosHandler(Handler):
+    async def handle(self, context: List[str]) -> AgentResponse:
+        return await self.agent.process(context)
+
+class DesignPatternsHandler(Handler):
+    async def handle(self, context: List[str]) -> AgentResponse:
+        return await self.agent.process(context)
+
+class EspecificoMateriaHandler(Handler):
+    async def handle(self, context: List[str]) -> AgentResponse:
+        return await self.agent.process(context) 

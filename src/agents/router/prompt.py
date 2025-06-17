@@ -8,6 +8,4 @@ Fluxos possíveis:
 - especifico_materia: Para dúvidas sobre o conteúdo específico da disciplina
 
 Responda apenas com o nome do fluxo.
-"""
-
-# Outros prompts serão adicionados nas próximas etapas 
+""" 
