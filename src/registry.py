@@ -7,6 +7,7 @@ from src.utils.logger import get_logger
 # Imports dos handlers
 from src.handlers.router.handler import RouterHandler
 from src.handlers.conteudo_materia.handler import ConteudoMateriaHandler
+from src.handlers.disciplina_info.handler import DisciplinaInfoHandler
 
 # Imports dos prompts e configs
 from src.agents.router.prompt import ROUTER_PROMPT
@@ -14,6 +15,9 @@ from src.agents.router.config import ROUTER_CONFIG
 
 from src.agents.conteudo_materia.prompt import CONTEUDO_MATERIA_PROMPT
 from src.agents.conteudo_materia.config import config as CONTEUDO_MATERIA_CONFIG
+
+from src.agents.disciplina_info.prompt import DISCIPLINA_INFO_PROMPT
+from src.agents.disciplina_info.config import config as DISCIPLINA_INFO_CONFIG
 
 class Registry:
     """
@@ -43,13 +47,15 @@ class Registry:
         # Mapeamento de nomes para classes de handlers
         self.handler_types: Dict[str, Type[Handler]] = {
             "router": RouterHandler,
-            "conteudo_materia": ConteudoMateriaHandler
+            "conteudo_materia": ConteudoMateriaHandler,
+            "disciplina_info": DisciplinaInfoHandler
         }
 
         # Mapeamento de nomes para configurações de agents
         self.agent_configs: Dict[str, Tuple] = {
             "router": (ROUTER_CONFIG, ROUTER_PROMPT),
-            "conteudo_materia": (CONTEUDO_MATERIA_CONFIG, CONTEUDO_MATERIA_PROMPT)
+            "conteudo_materia": (CONTEUDO_MATERIA_CONFIG, CONTEUDO_MATERIA_PROMPT),
+            "disciplina_info": (DISCIPLINA_INFO_CONFIG, DISCIPLINA_INFO_PROMPT)
         }
         
         self._initialized = True
@@ -87,5 +93,4 @@ class Registry:
             return handler
             
         except Exception as e:
-            self.logger.error(f"Erro ao criar handler '{handler_type}': {str(e)}")
-            raise 
+            raise HandlerNotFoundError(f"Não foi possível obter o handler: {str(e)}") 

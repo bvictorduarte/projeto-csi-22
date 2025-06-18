@@ -12,6 +12,7 @@ REGRAS:
 6. Se a pergunta for sobre o histórico da conversa, envie para conteudo_materia
 7. Se a pergunta for sobre progressão do aprendizado, envie para conteudo_materia
 8. Se a pergunta for sobre conceitos já discutidos, envie para conteudo_materia
+9. Se a pergunta for sobre informações da disciplina CSI22, envie para disciplina_info
 
 CATEGORIAS:
 
@@ -32,25 +33,45 @@ conteudo_materia
 - Dúvidas conceituais
 - Implementações práticas
 
+disciplina_info
+- Informações sobre a professora
+- Horário das aulas
+- Local das aulas
+- Modalidade (presencial/remota)
+- Plataformas utilizadas
+- Ementa da disciplina
+- Projetos da disciplina
+- Laboratórios e exercícios
+- Avaliações e notas
+- Pré-requisitos
+- Relação com outras disciplinas
+- Ferramentas e ambientes utilizados
+- Metodologia de ensino
+- Organização da disciplina
+- Trabalhos em grupo
+- Apresentações
+
 EXEMPLOS DE CONTEXTO:
 
 Contexto 1:
-Usuário: "O que é herança?"
+Usuário: "Qual é o horário da aula?"
+Resposta: disciplina_info (informação administrativa)
+
+Contexto 2:
+Usuário: "Me explique sobre herança"
 Assistant: [explicação sobre herança]
 Usuário: "Como implemento em Python?"
 Resposta: conteudo_materia (pergunta sobre conceito)
 
-Contexto 2:
-Usuário: "O que é Singleton?"
-Assistant: [explicação sobre Singleton]
-Usuário: "Como uso com herança?"
-Resposta: conteudo_materia (pergunta sobre conceitos)
-
 Contexto 3:
+Usuário: "Quais são os projetos da disciplina?"
+Resposta: disciplina_info (informação sobre atividades)
+
+Contexto 4:
 Usuário: "O que aprendemos até agora?"
 Assistant: [lista de tópicos]
 Usuário: "Pode me explicar melhor o último tópico?"
 Resposta: conteudo_materia (revisão de conteúdo anterior)
 
-IMPORTANTE: Responda APENAS com o identificador acima, sem nenhum texto adicional.
+IMPORTANTE: Responda APENAS com um dos identificadores acima, sem nenhum texto adicional.
 """ 
