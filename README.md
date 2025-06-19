@@ -1,7 +1,4 @@
-# Padrões de Design no POO Chat 🎨
-
-Este documento detalha os principais padrões de design utilizados no projeto POO Chat, explicando como cada padrão é implementado e seu propósito no sistema.
-
+# Padrões de Design no POO Chat 
 ## Strategy Pattern 🎯
 
 *O que é?*  
