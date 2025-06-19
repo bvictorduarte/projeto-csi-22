@@ -8,6 +8,7 @@ from src.utils.logger import get_logger
 from src.handlers.router.handler import RouterHandler
 from src.handlers.conteudo_materia.handler import ConteudoMateriaHandler
 from src.handlers.disciplina_info.handler import DisciplinaInfoHandler
+from src.handlers.projeto_jogo.handler import ProjetoJogoHandler
 
 # Imports dos prompts e configs
 from src.agents.router.prompt import ROUTER_PROMPT
@@ -18,6 +19,9 @@ from src.agents.conteudo_materia.config import config as CONTEUDO_MATERIA_CONFIG
 
 from src.agents.disciplina_info.prompt import DISCIPLINA_INFO_PROMPT
 from src.agents.disciplina_info.config import config as DISCIPLINA_INFO_CONFIG
+
+from src.agents.projeto_jogo.prompt import PROJETO_JOGO_PROMPT
+from src.agents.projeto_jogo.config import config as PROJETO_JOGO_CONFIG
 
 class Registry:
     """
@@ -48,14 +52,16 @@ class Registry:
         self.handler_types: Dict[str, Type[Handler]] = {
             "router": RouterHandler,
             "conteudo_materia": ConteudoMateriaHandler,
-            "disciplina_info": DisciplinaInfoHandler
+            "disciplina_info": DisciplinaInfoHandler,
+            "projeto_jogo": ProjetoJogoHandler
         }
 
         # Mapeamento de nomes para configurações de agents
         self.agent_configs: Dict[str, Tuple] = {
             "router": (ROUTER_CONFIG, ROUTER_PROMPT),
             "conteudo_materia": (CONTEUDO_MATERIA_CONFIG, CONTEUDO_MATERIA_PROMPT),
-            "disciplina_info": (DISCIPLINA_INFO_CONFIG, DISCIPLINA_INFO_PROMPT)
+            "disciplina_info": (DISCIPLINA_INFO_CONFIG, DISCIPLINA_INFO_PROMPT),
+            "projeto_jogo": (PROJETO_JOGO_CONFIG, PROJETO_JOGO_PROMPT)
         }
         
         self._initialized = True
